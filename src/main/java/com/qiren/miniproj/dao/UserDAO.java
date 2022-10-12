@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.qiren.miniproj.bean.UserBean;
 import com.qiren.miniproj.bean.UserRegistrationBean;
 import com.qiren.miniproj.manager.ConnectionManager;
+import com.qiren.miniproj.tools.Constants;
 
 public class UserDAO {
 
@@ -18,8 +19,7 @@ public class UserDAO {
 		Connection connection = ConnectionManager.getConnection();
 
 		String sql = "INSERT INTO `mini_proj_web`.`user` (`pkUser`, `fname`, `lname`, `addr`, `city`, `state`, `postalcode`, `mobile`, `email`, `gender`, `birthday`, `role`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, MD5(?));";
-		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
+		try (PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setString(1, null);
 			ps.setString(2, bean.getFname());
 			ps.setString(3, bean.getLname());
@@ -31,7 +31,7 @@ public class UserDAO {
 			ps.setString(9, bean.getEmail());
 			ps.setString(10, bean.getGender());
 			ps.setString(11, bean.getBirthday());
-			ps.setString(12, "1"); // user is mean to be role '1'
+			ps.setString(12, Constants.ROLE_USER); // user is mean to be role '1'
 			ps.setString(13, bean.getUsername());
 			ps.setString(14, bean.getPassword());
 			ps.execute();
@@ -50,8 +50,7 @@ public class UserDAO {
 
 		String sql = "SELECT * FROM mini_proj_web.user where username=?;";
 		UserBean bean = null;
-		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
+		try (PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			bean = parseData(rs);
@@ -72,8 +71,7 @@ public class UserDAO {
 		String sql = "SELECT * FROM mini_proj_web.user where username=? and password=MD5(?);";
 
 		UserBean bean = null;
-		try {
-			PreparedStatement ps = connection.prepareStatement(sql);
+		try (PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
