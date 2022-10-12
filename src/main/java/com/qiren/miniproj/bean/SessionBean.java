@@ -3,8 +3,8 @@ package com.qiren.miniproj.bean;
 public class SessionBean {
 	
 	private String userId;
-	
 	private String fname;
+	private String role;
 	
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -21,4 +21,12 @@ public class SessionBean {
 	public String getFname() {
 		return fname;
 	}
+	
+	public void setRole(String role) {
+        this.role = role;
+    }
+	
+	public String getRole() {
+        return role;
+    }
 }
