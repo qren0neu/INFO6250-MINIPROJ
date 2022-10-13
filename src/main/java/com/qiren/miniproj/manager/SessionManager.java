@@ -37,6 +37,16 @@ public class SessionManager {
         }
         return null;
     }
+    
+    public String getUserName(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
+        Utils.log("Get UserName: " + bean);
+        if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
+            return bean.getUserId();
+        }
+        return null;
+    }
 
     /**
      * Begin their session for newly login users.

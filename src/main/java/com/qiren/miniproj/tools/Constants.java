@@ -9,6 +9,7 @@ public class Constants {
 
     public static final String PARAM_ACTION = "action";
     public static final String PARAM_ERROR = "error";
+    public static final String PARAM_USER_BEAN = "userbean";
 	
 	/* Online MD5 hash: https://emn178.github.io/online-tools/md5.html */
 	public static final String HASH_LOGIN = "d56b699830e77ba53855679cb1d252da";
@@ -40,4 +41,5 @@ public class Constants {
     public static final String PAGE_FAILED = WEB_INF + "result/failure.jsp";
     public static final String PAGE_DASHBOARD_USER = WEB_INF + "dashboard/userDashboard.jsp";
     public static final String PAGE_DASHBOARD_ADMIN = WEB_INF + "dashboard/adminDashboard.jsp";
+    public static final String PAGE_VIEW_USER = WEB_INF + "user/viewInfo.jsp";
 }

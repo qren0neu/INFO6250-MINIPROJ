@@ -78,4 +78,16 @@
     <url-pattern>/Logout</url-pattern>
     <url-pattern>/c93798b55ff7f793c2098e1c577d27aa</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSelfInfo</display-name>
+    <servlet-name>ViewSelfInfo</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewSelfInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSelfInfo</servlet-name>
+    <url-pattern>/ViewSelfInfo</url-pattern>
+    <url-pattern>/2ec3dca8e1a81194fb071dd330492a22</url-pattern>
+    <url-pattern>/97e1a767bfa5f33fbf116c3f80ee7334</url-pattern>
+  </servlet-mapping>
 </web-app>
