@@ -29,4 +29,9 @@ public class SessionBean {
 	public String getRole() {
         return role;
     }
+
+    @Override
+    public String toString() {
+        return "SessionBean [userId=" + userId + ", fname=" + fname + ", role=" + role + "]";
+    }
 }
