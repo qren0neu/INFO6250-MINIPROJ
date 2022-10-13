@@ -87,7 +87,39 @@
   <servlet-mapping>
     <servlet-name>ViewSelfInfo</servlet-name>
     <url-pattern>/ViewSelfInfo</url-pattern>
-    <url-pattern>/2ec3dca8e1a81194fb071dd330492a22</url-pattern>
     <url-pattern>/97e1a767bfa5f33fbf116c3f80ee7334</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditSelfInfo</display-name>
+    <servlet-name>EditSelfInfo</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.EditSelfInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditSelfInfo</servlet-name>
+    <url-pattern>/EditSelfInfo</url-pattern>
+    <url-pattern>/749939bff702a796497ea19dc5b232eb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSelfInfoAdmin</display-name>
+    <servlet-name>ViewSelfInfoAdmin</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewSelfInfoAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSelfInfoAdmin</servlet-name>
+    <url-pattern>/ViewSelfInfoAdmin</url-pattern>
+    <url-pattern>/2ec3dca8e1a81194fb071dd330492a22</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditSelfInfoAdmin</display-name>
+    <servlet-name>EditSelfInfoAdmin</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.EditSelfInfoAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditSelfInfoAdmin</servlet-name>
+    <url-pattern>/EditSelfInfoAdmin</url-pattern>
+    <url-pattern>/d8be84302730ef5d89825aef69d43618</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -45,8 +45,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-	    String username = request.getParameter("username");
-        String password = request.getParameter("password");
+	    String username = request.getParameter(Constants.PARAM_USER_NAME);
+        String password = request.getParameter(Constants.PARAM_PASSWORD);
         
         UserBean userbean = UserService.getInstance().getUserInfo(username, password);
         if (null != userbean) {

@@ -13,15 +13,15 @@ import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
 
 /**
- * Servlet implementation class ViewSelfInfo
+ * Servlet implementation class EditSelfInfo
  */
-public class ViewSelfInfo extends HttpServlet {
+public class EditSelfInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewSelfInfo() {
+    public EditSelfInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +30,13 @@ public class ViewSelfInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    // jump to the view info page
+        // TODO Auto-generated method stub
         String userName = SessionManager.getInstance().getUserName(request);
-	    if (null != userName) {
-	        UserBean userBean = UserService.getInstance().getUserInfo(userName);
-	        request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
-	        request.getRequestDispatcher(Constants.PAGE_VIEW_USER).forward(request, response);
-	    }
+        if (null != userName) {
+            UserBean userBean = UserService.getInstance().getUserInfo(userName);
+            request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
+            request.getRequestDispatcher(Constants.PAGE_EDIT_USER).forward(request, response);
+        }
 	}
 
 	/**
@@ -45,7 +44,6 @@ public class ViewSelfInfo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    // we have nothing to do with post here
 		doGet(request, response);
 	}
 

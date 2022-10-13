@@ -13,15 +13,15 @@ import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
 
 /**
- * Servlet implementation class ViewSelfInfo
+ * Servlet implementation class EditSelfInfoAdmin
  */
-public class ViewSelfInfo extends HttpServlet {
+public class EditSelfInfoAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewSelfInfo() {
+    public EditSelfInfoAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +31,16 @@ public class ViewSelfInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    // jump to the view info page
-        String userName = SessionManager.getInstance().getUserName(request);
-	    if (null != userName) {
-	        UserBean userBean = UserService.getInstance().getUserInfo(userName);
-	        request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
-	        request.getRequestDispatcher(Constants.PAGE_VIEW_USER).forward(request, response);
-	    }
+        // if we have username sent by request, we use that instead of our own.
+        String userName = request.getParameter(Constants.PARAM_USER_NAME);
+        if (null == userName || userName.isBlank()) {
+            userName = SessionManager.getInstance().getUserName(request);
+        }
+        if (null != userName) {
+            UserBean userBean = UserService.getInstance().getUserInfo(userName);
+            request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
+            request.getRequestDispatcher(Constants.PAGE_EDIT_USER).forward(request, response);
+        }
 	}
 
 	/**
@@ -45,7 +48,6 @@ public class ViewSelfInfo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    // we have nothing to do with post here
 		doGet(request, response);
 	}
 
