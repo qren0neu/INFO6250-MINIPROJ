@@ -12,6 +12,7 @@ import java.util.Map;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
+import com.qiren.miniproj.tools.Utils;
 
 /**
  * Servlet implementation class Controller
@@ -47,6 +48,7 @@ public class Controller extends HttpServlet {
     private void initRoleMap() {
         roleMapCommon.put(Constants.ACTION_LOGIN, Constants.HASH_LOGIN);
         roleMapCommon.put(Constants.ACTION_REGISTER, Constants.HASH_REGISTER);
+        roleMapCommon.put(Constants.ACTION_LOGOUT, Constants.HASH_LOGOUT);
 
         roleMapUser.put(Constants.ACTION_DASHBOARD, Constants.HASH_DASHBOARD_USER);
         roleMapUser.put(Constants.ACTION_BOOKS, Constants.HASH_BOOKS_USER);
@@ -81,20 +83,23 @@ public class Controller extends HttpServlet {
     private void intercept(HttpServletRequest request, HttpServletResponse response, String method) {
 
         String action = request.getParameter(Constants.PARAM_ACTION);
+        Utils.log("Intercept: " + action + " " + method);
         if (action == null || action.isBlank()) {
             turnToError(request, response);
         }
         String commonHashIfExist = roleMapCommon.get(action);
         if (null != commonHashIfExist) {
+            Utils.log("Intercept Common: " + action + " " + method + " " + commonHashIfExist);
             interceptCommon(request, response, commonHashIfExist, method);
             return;
         }
         if (!SessionManager.getInstance().hasSession(request)) {
+            Utils.log("Turn to login: " + action + " " + method);
             turnToLogin(request, response);
             return;
         }
         String role = SessionManager.getInstance().getRole(request);
-
+        Utils.log("Intercept get role: " + role);
         if (null != role && !role.isBlank()) {
             if (Constants.METHOD_POST.equals(method)) {
                 interceptPostMethod(request, response, role);
@@ -131,6 +136,7 @@ public class Controller extends HttpServlet {
         } else {
             target = roleMapAdmin.get(action);
         }
+        Utils.log("Intercept Get: " + action + " " + target + " " + role);
         if (null != target && !target.isBlank()) {
             try {
                 // request.getRequestDispatcher(target).forward(request, response);
@@ -153,6 +159,7 @@ public class Controller extends HttpServlet {
         } else {
             target = roleMapAdmin.get(action);
         }
+        Utils.log("Intercept Post: " + action + " " + target + " " + role);
         if (null != target && !target.isBlank()) {
             try {
                 request.getRequestDispatcher(target).forward(request, response);

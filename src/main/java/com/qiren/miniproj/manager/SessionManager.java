@@ -33,9 +33,9 @@ public class SessionManager {
         SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
         Utils.log("Get role: " + bean);
         if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
-            return null;
+            return bean.getRole();
         }
-        return bean.getRole();
+        return null;
     }
 
     /**

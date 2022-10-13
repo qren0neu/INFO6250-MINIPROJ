@@ -12,6 +12,7 @@ public class Constants {
 	
 	/* Online MD5 hash: https://emn178.github.io/online-tools/md5.html */
 	public static final String HASH_LOGIN = "d56b699830e77ba53855679cb1d252da";
+    public static final String HASH_LOGOUT = "c93798b55ff7f793c2098e1c577d27aa";
 	public static final String HASH_REGISTER = "9de4a97425678c5b1288aa70c1669a64";
 	public static final String HASH_DASHBOARD_ADMIN = "09fed77547c060e78d3a667d2fffceca";
 	public static final String HASH_DASHBOARD_USER = "f4c5f37ac762c823056c456d470f73d5";
@@ -24,6 +25,7 @@ public class Constants {
     public static final String HASH_VIEW_USER_ADMIN = "2ec3dca8e1a81194fb071dd330492a22";
 	
 	public static final String ACTION_LOGIN = "login";
+    public static final String ACTION_LOGOUT = "logout";
 	public static final String ACTION_REGISTER = "register";
 	public static final String ACTION_DASHBOARD = "dashboard";
     public static final String ACTION_BOOKS = "books";
@@ -36,4 +38,6 @@ public class Constants {
     public static final String PAGE_REGISTER = WEB_INF + "register/RegistrationForm.html";
     public static final String PAGE_SUCCESS = WEB_INF + "result/success.jsp";
     public static final String PAGE_FAILED = WEB_INF + "result/failure.jsp";
+    public static final String PAGE_DASHBOARD_USER = WEB_INF + "dashboard/userDashboard.jsp";
+    public static final String PAGE_DASHBOARD_ADMIN = WEB_INF + "dashboard/adminDashboard.jsp";
 }

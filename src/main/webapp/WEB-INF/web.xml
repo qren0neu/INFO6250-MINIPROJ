@@ -45,4 +45,37 @@
     <url-pattern>/Register</url-pattern>
     <url-pattern>/9de4a97425678c5b1288aa70c1669a64</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Dashboard</display-name>
+    <servlet-name>Dashboard</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.Dashboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dashboard</servlet-name>
+    <url-pattern>/Dashboard</url-pattern>
+    <url-pattern>/f4c5f37ac762c823056c456d470f73d5</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminDashboard</display-name>
+    <servlet-name>AdminDashboard</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.AdminDashboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDashboard</servlet-name>
+    <url-pattern>/AdminDashboard</url-pattern>
+    <url-pattern>/09fed77547c060e78d3a667d2fffceca</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+    <url-pattern>/c93798b55ff7f793c2098e1c577d27aa</url-pattern>
+  </servlet-mapping>
 </web-app>
