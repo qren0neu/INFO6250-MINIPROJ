@@ -10,7 +10,7 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   <error-page>
-      <location>/error.html</location>
+    <location>/error.html</location>
   </error-page>
   <servlet>
     <description></description>
@@ -22,5 +22,27 @@
     <servlet-name>Controller</servlet-name>
     <url-pattern>/Controller</url-pattern>
     <url-pattern>/controller</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+    <url-pattern>/d56b699830e77ba53855679cb1d252da</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Register</display-name>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
+    <url-pattern>/9de4a97425678c5b1288aa70c1669a64</url-pattern>
   </servlet-mapping>
 </web-app>

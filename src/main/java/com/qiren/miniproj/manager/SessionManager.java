@@ -2,6 +2,7 @@ package com.qiren.miniproj.manager;
 
 import com.qiren.miniproj.bean.SessionBean;
 import com.qiren.miniproj.tools.Constants;
+import com.qiren.miniproj.tools.Utils;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -23,7 +24,7 @@ public class SessionManager {
         }
         return false;
     }
-    
+
     public String getRole(HttpServletRequest request) {
         SessionBean bean = (SessionBean) request.getAttribute(SESSION_KEY);
         if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
@@ -47,13 +48,15 @@ public class SessionManager {
         sessionBean.setUserId(fname);
         sessionBean.setRole(role);
         request.setAttribute(SESSION_KEY, sessionBean);
+        Utils.log("Begin Session: " + userId + " " + fname + " " + role);
     }
 
     /**
      * End their sessions after users logout.
      */
     public void endSession(HttpServletRequest request) {
-        request.setAttribute(SESSION_KEY, null);
+        //request.setAttribute(SESSION_KEY, null);
+        request.getSession().invalidate();
     }
 
     public static SessionManager getInstance() {

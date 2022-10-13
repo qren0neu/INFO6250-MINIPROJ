@@ -6,6 +6,9 @@ public class Constants {
 	
 	public static final String METHOD_GET = "GET";
 	public static final String METHOD_POST= "POST";
+
+    public static final String PARAM_ACTION = "action";
+    public static final String PARAM_ERROR = "error";
 	
 	/* Online MD5 hash: https://emn178.github.io/online-tools/md5.html */
 	public static final String HASH_LOGIN = "d56b699830e77ba53855679cb1d252da";
@@ -27,4 +30,10 @@ public class Constants {
     public static final String ACTION_BOOK_ORDER = "bookOrder";
     public static final String ACTION_USER_LIST = "userList";
     public static final String ACTION_VIEW_USER = "viewUser";
+    
+    public static final String WEB_INF = "WEB-INF/";
+    public static final String PAGE_LOGIN = WEB_INF + "login/login.jsp";
+    public static final String PAGE_REGISTER = WEB_INF + "register/RegistrationForm.html";
+    public static final String PAGE_SUCCESS = WEB_INF + "result/success.jsp";
+    public static final String PAGE_FAILED = WEB_INF + "result/failure.jsp";
 }

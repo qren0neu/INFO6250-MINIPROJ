@@ -15,7 +15,7 @@ public class UserDAO {
 	/**
 	 * Create a new registered user
 	 */
-	public void createUserInfo(UserRegistrationBean bean) {
+	public boolean createUserInfo(UserRegistrationBean bean) {
 		Connection connection = ConnectionManager.getConnection();
 
 		String sql = "INSERT INTO `mini_proj_web`.`user` (`pkUser`, `fname`, `lname`, `addr`, `city`, `state`, `postalcode`, `mobile`, `email`, `gender`, `birthday`, `role`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, MD5(?));";
@@ -37,9 +37,11 @@ public class UserDAO {
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 
 		ConnectionManager.closeConnection(connection);
+		return true;
 	}
 
 	/**
