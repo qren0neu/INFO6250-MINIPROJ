@@ -48,7 +48,13 @@ public class EditSelfInfo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+        boolean result = UserService.getInstance().updateUserInfo(request, response);
+        SessionManager.getInstance().endSession(request);
+        if (result) {
+            request.getRequestDispatcher(Constants.PAGE_SUCCESS).forward(request, response);
+        } else {
+            request.getRequestDispatcher(Constants.PAGE_FAILED).forward(request, response);
+        }
 	}
 
 }

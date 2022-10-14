@@ -27,7 +27,7 @@
 							name="username" />
 					</p>
 					<p>
-						<input class="w3-input w3-border" type="text" placeholder="Password" required name="password" />
+						<input class="w3-input w3-border" type="password" placeholder="Password" required name="password" />
 					</p>
 					<p>
 						<button class="w3-button w3-right" type="submit">

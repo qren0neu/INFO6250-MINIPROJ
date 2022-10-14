@@ -17,6 +17,10 @@ public class RegistrationValidater {
     }
 
     public boolean isValid() {
+        return isValid(true);
+    }
+
+    public boolean isValid(boolean checkPass) {
         String companyPattern = "([a-zA-Z0-9]+\\s?)+";
         String addressPattern = "([a-zA-Z0-9]+\\s?)+";
         String statePattern = "[A-Z]{2}";
@@ -97,19 +101,25 @@ public class RegistrationValidater {
         }
         // username and password
         String username = registrationInfo.getUsername();
-        String password = registrationInfo.getPassword();
-        String confirm = registrationInfo.getConfirmPassword();
-        if (stringBlank(username) || stringBlank(password)) {
+        if (stringBlank(username)) {
             setErrorInfo("Missing username or password");
         } else {
             if (!username.matches(userNamePattern)) {
                 setErrorInfo("Invalid Username format");
             }
-            if (!password.matches(passwordPattern)) {
-                setErrorInfo("Invalid Password format");
-            }
-            if (!password.equals(confirm)) {
-                setErrorInfo("Password mismatch confirm password");
+        }
+        if (checkPass) {
+            String password = registrationInfo.getPassword();
+            String confirm = registrationInfo.getConfirmPassword();
+            if (stringBlank(password)) {
+                setErrorInfo("Missing username or password");
+            } else {
+                if (!password.matches(passwordPattern)) {
+                    setErrorInfo("Invalid Password format");
+                }
+                if (!password.equals(confirm)) {
+                    setErrorInfo("Password mismatch confirm password");
+                }
             }
         }
         return null == getErrorInfo() || getErrorInfo().isEmpty();

@@ -100,8 +100,7 @@
 						<input type="hidden" name="userid" value="<%=userBean.getUserId() %>"/>
 					</div>
 					<div>
-						<label>New Password</label><input type="password" name="password"
-							placeholder="Hint: length 8-16" pattern=".{8,16}">
+						<label>New Password</label><input type="password" name="password" pattern=".{8,16}">
 					</div>
 					<div>
 						<label>Confirm New password*</label><input type="password"

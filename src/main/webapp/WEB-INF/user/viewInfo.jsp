@@ -60,7 +60,7 @@ tr:nth-child(even) {
 
 th, td {
 	text-align: left;
-	padding: 20px;
+	padding: 12px;
 	font-weight: 300;
 }
 
