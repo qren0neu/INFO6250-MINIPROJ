@@ -18,6 +18,12 @@ public class UserService {
 
     }
 
+    public boolean updateUserInfo(HttpServletRequest request,
+            HttpServletResponse response) {
+        
+        return true;
+    }
+    
     public boolean submitUserInfo(HttpServletRequest request,
             HttpServletResponse response) {
         // UserBean userBean = new UserBean();

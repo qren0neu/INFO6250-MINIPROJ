@@ -36,7 +36,7 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean result = UserService.getInstance().submitUserInfo(request, response);
+		boolean result = UserService.getInstance().updateUserInfo(request, response);
 		if (result) {
 		    request.getRequestDispatcher(Constants.PAGE_SUCCESS).forward(request, response);
 		} else {

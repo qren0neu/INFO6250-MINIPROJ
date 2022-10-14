@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.tools.Constants;
 
 /**
@@ -28,6 +29,9 @@ public class Dashboard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
 		request.getRequestDispatcher(Constants.PAGE_DASHBOARD_USER).forward(request, response);
 	}
 

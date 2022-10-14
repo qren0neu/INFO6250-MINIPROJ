@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.qiren.miniproj.bean.UserBean;
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
@@ -32,6 +33,9 @@ public class ViewSelfInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	    // jump to the view info page
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
         String userName = SessionManager.getInstance().getUserName(request);
 	    if (null != userName) {
 	        UserBean userBean = UserService.getInstance().getUserInfo(userName);

@@ -28,7 +28,7 @@
 	UserRegistrationBean regisBean = userBean.getUserBean();
 	%>
 	<div class="main-block">
-		<form action="controller?action=register" method="post">
+		<form action="controller?action=editUser" method="post">
 			<h1>Edit Personal Info</h1>
 			<fieldset>
 				<legend>
@@ -97,9 +97,10 @@
 						<label>Username*</label><input type="text" name="username"
 							value="<%=regisBean.getUsername()%>" pattern="[a-zA-Z0-9]{4,8}"
 							required>
+						<input type="hidden" name="userid" value="<%=userBean.getUserId() %>"/>
 					</div>
 					<div>
-						<label>New Password*</label><input type="password" name="password"
+						<label>New Password</label><input type="password" name="password"
 							placeholder="Hint: length 8-16" pattern=".{8,16}">
 					</div>
 					<div>

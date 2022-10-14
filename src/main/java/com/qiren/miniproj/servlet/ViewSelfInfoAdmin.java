@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.qiren.miniproj.bean.UserBean;
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
@@ -33,6 +34,9 @@ public class ViewSelfInfoAdmin extends HttpServlet {
 		// TODO Auto-generated method stub
 	    // if we have username sent by request, we use that instead of our own.
 	    // ONLY ADMIN CAN DO LIKE THIS!
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
         String userName = request.getParameter(Constants.PARAM_USER_NAME);
         if (null == userName || userName.isBlank()) {
             userName = SessionManager.getInstance().getUserName(request);
