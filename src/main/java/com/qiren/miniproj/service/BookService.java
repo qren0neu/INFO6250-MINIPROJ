@@ -29,6 +29,10 @@ public class BookService {
 		return false;
 	}
 
+    public boolean updateBook(BookBean book) {
+        return bookdao.updateBook(book);
+    }
+
 	public static BookService getInstance() {
 		return Inner.instance;
 	}

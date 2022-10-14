@@ -12,73 +12,73 @@ import com.qiren.miniproj.manager.ConnectionManager;
 
 public class BookDAO {
 
-	/**
-	 * Get all the books from storage
-	 */
-	public List<BookBean> getBookList() {
-		List<BookBean> bookList = new ArrayList<>();
+    /**
+     * Get all the books from storage
+     */
+    public List<BookBean> getBookList() {
+        List<BookBean> bookList = new ArrayList<>();
 
-		Connection connection = ConnectionManager.getConnection();
+        Connection connection = ConnectionManager.getConnection();
 
-		String sql = "select * from book";
-		try (PreparedStatement ps = connection.prepareStatement(sql)) {
-			ResultSet res = ps.executeQuery();
-			while (res.next()) {
-				BookBean bookBean = new BookBean();
-				bookBean.setPkBook(res.getString("pkBook"));
-				bookBean.setISBN(res.getString("ISBN"));
-				bookBean.setName(res.getString("name"));
-				bookBean.setAuthor(res.getString("author"));
-				bookBean.setPublisher(res.getString("publisher"));
-				bookBean.setInstock(res.getString("instock"));
-				bookBean.setDescription(res.getString("description"));
-				bookBean.setCoverimg(res.getString("coverimg"));
-				bookList.add(bookBean);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        String sql = "select * from book";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                BookBean bookBean = new BookBean();
+                bookBean.setPkBook(res.getString("pkBook"));
+                bookBean.setISBN(res.getString("ISBN"));
+                bookBean.setName(res.getString("name"));
+                bookBean.setAuthor(res.getString("author"));
+                bookBean.setPublisher(res.getString("publisher"));
+                bookBean.setInstock(res.getString("instock"));
+                bookBean.setDescription(res.getString("description"));
+                bookBean.setCoverimg(res.getString("coverimg"));
+                bookList.add(bookBean);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
 
-		ConnectionManager.closeConnection(connection);
+        return bookList;
+    }
 
-		return bookList;
-	}
+    /**
+     * Get a single book by its ISBN
+     */
+    public BookBean getBook(String ISBN) {
 
-	/**
-	 * Get a single book by its ISBN
-	 */
-	public BookBean getBook(String ISBN) {
+        BookBean bookBean = null;
 
-		BookBean bookBean = null;
+        Connection connection = ConnectionManager.getConnection();
 
-		Connection connection = ConnectionManager.getConnection();
+        String sql = "select * from book where ISBN = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, ISBN);
+            ResultSet res = ps.executeQuery();
+            if (res.next()) {
+                bookBean = new BookBean();
+                bookBean.setPkBook(res.getString("pkBook"));
+                bookBean.setISBN(res.getString("ISBN"));
+                bookBean.setName(res.getString("name"));
+                bookBean.setAuthor(res.getString("author"));
+                bookBean.setPublisher(res.getString("publisher"));
+                bookBean.setInstock(res.getString("instock"));
+                bookBean.setDescription(res.getString("description"));
+                bookBean.setCoverimg(res.getString("coverimg"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
 
-		String sql = "select * from book where ISBN = ?";
-		try (PreparedStatement ps = connection.prepareStatement(sql)) {
-			ps.setString(1, ISBN);
-			ResultSet res = ps.executeQuery();
-			if (res.next()) {
-				bookBean = new BookBean();
-				bookBean.setPkBook(res.getString("pkBook"));
-				bookBean.setISBN(res.getString("ISBN"));
-				bookBean.setName(res.getString("name"));
-				bookBean.setAuthor(res.getString("author"));
-				bookBean.setPublisher(res.getString("publisher"));
-				bookBean.setInstock(res.getString("instock"));
-				bookBean.setDescription(res.getString("description"));
-				bookBean.setCoverimg(res.getString("coverimg"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+        return bookBean;
+    }
 
-		ConnectionManager.closeConnection(connection);
-
-		return bookBean;
-	}
-	
-	public BookBean getBookById(String bookId) {
+    public BookBean getBookById(String bookId) {
 
         BookBean bookBean = null;
 
@@ -101,45 +101,78 @@ public class BookDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
         }
-
-        ConnectionManager.closeConnection(connection);
 
         return bookBean;
     }
 
-	/**
-	 * Create a book, regardless of it exists or not. Please make sure check it
-	 * before create it.
-	 */
-	public void createBook(BookBean book) {
-		Connection connection = ConnectionManager.getConnection();
+    /**
+     * Create a book, regardless of it exists or not. Please make sure check it
+     * before create it.
+     */
+    public void createBook(BookBean book) {
+        Connection connection = ConnectionManager.getConnection();
 
-		String sql = "insert into book values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into book values (?,?,?,?,?,?,?,?)";
 
-		try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-			ps.setString(1, null);
-			ps.setString(2, book.getISBN());
-			ps.setString(3, book.getName());
-			ps.setString(4, book.getAuthor());
-			ps.setString(5, book.getPublisher());
-			ps.setString(6, book.getDescription());
-			ps.setString(7, book.getInstock());
-			ps.setString(8, book.getCoverimg());
-			
-			ps.execute();
+            ps.setString(1, null);
+            ps.setString(2, book.getISBN());
+            ps.setString(3, book.getName());
+            ps.setString(4, book.getAuthor());
+            ps.setString(5, book.getPublisher());
+            ps.setString(6, book.getDescription());
+            ps.setString(7, book.getInstock());
+            ps.setString(8, book.getCoverimg());
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+            ps.execute();
 
-		ConnectionManager.closeConnection(connection);
-	}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
+    }
 
-	public void updateBook() {
-		Connection connection = ConnectionManager.getConnection();
+    public boolean updateBook(BookBean book) {
+        Connection connection = ConnectionManager.getConnection();
 
-		ConnectionManager.closeConnection(connection);
-	}
+        String sql = "UPDATE `mini_proj_web`.`book` "
+                + "SET "
+                + "`ISBN` = ?, "
+                + "`name` = ?, "
+                + "`author` = ?, "
+                + "`publisher` = ?, "
+                + "`description` = ?, "
+                + "`instock` = ?, "
+                + "`coverimg` = ? "
+                + " WHERE `pkBook` = ?; "
+                + "";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            // ps.setString(1, null);
+            ps.setString(1, book.getISBN());
+            ps.setString(2, book.getName());
+            ps.setString(3, book.getAuthor());
+            ps.setString(4, book.getPublisher());
+            ps.setString(5, book.getDescription());
+            ps.setString(6, book.getInstock());
+            ps.setString(7, book.getCoverimg());
+            ps.setString(8, book.getPkBook());
+
+            ps.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
+
+        return true;
+    }
 }

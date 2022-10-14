@@ -5,7 +5,12 @@
 <html>
 
 <head>
-<meta http-equiv="refresh" content="3;url=./" />
+<% String returnTo = (String) request.getAttribute("returnTo"); 
+	if (null == returnTo) {
+		returnTo = "controller?action=dashboard";
+	} 
+%>
+<meta http-equiv="refresh" content="3;url=<%=returnTo %>" />
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap"
 	rel="stylesheet">

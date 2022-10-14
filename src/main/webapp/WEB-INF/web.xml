@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="5.0">
   <display-name>MiniProject</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -198,5 +198,27 @@
     <servlet-name>AddBook</servlet-name>
     <url-pattern>/AddBook</url-pattern>
     <url-pattern>/3fdb59b0d7ebab342efbfa4c6a887a35</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateBookInfo</display-name>
+    <servlet-name>UpdateBookInfo</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.UpdateBookInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateBookInfo</servlet-name>
+    <url-pattern>/UpdateBookInfo</url-pattern>
+    <url-pattern>/2dad20d690fb0f94ea84dd164ab40634</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditBook</display-name>
+    <servlet-name>EditBook</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.EditBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditBook</servlet-name>
+    <url-pattern>/EditBook</url-pattern>
+    <url-pattern>/fe99e4ee55f6d178da0c41d9a3e7fbe3</url-pattern>
   </servlet-mapping>
 </web-app>
