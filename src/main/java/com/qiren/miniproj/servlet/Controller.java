@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
@@ -98,6 +99,9 @@ public class Controller extends HttpServlet {
         if (!SessionManager.getInstance().hasSession(request)) {
             Utils.log("Turn to login: " + action + " " + method);
             turnToLogin(request, response);
+            return;
+        }
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
             return;
         }
         String role = SessionManager.getInstance().getRole(request);

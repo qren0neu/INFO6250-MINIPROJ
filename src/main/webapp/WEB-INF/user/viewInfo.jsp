@@ -26,7 +26,7 @@
 
 body {
 	font-family: 'Nunito', sans-serif;
-	color: #384047;
+	color: #000000;
 }
 
 table {
@@ -164,7 +164,7 @@ tfoot td {
 		</tfoot>
 	</table>
 
-	<a href="" class="w3-button w3-right w3-light-gray"
+	<a href="controller?action=editUser" class="w3-button w3-right w3-light-gray"
 		style="margin-right: 250px; margin-bottom: 120px;">Edit Personal
 		Info</a>
 
