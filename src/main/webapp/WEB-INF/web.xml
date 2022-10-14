@@ -144,4 +144,48 @@
     <url-pattern>/SumitEditInfo</url-pattern>
     <url-pattern>/2a855962fb7085847e6d1ba96545692a</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewBookList</display-name>
+    <servlet-name>ViewBookList</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewBookList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBookList</servlet-name>
+    <url-pattern>/ViewBookList</url-pattern>
+    <url-pattern>/13d541cb4eda5e8336ba430376b6cd9e</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewBookListAdmin</display-name>
+    <servlet-name>ViewBookListAdmin</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewBookListAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBookListAdmin</servlet-name>
+    <url-pattern>/ViewBookListAdmin</url-pattern>
+    <url-pattern>/6ca5734e58f6b665e5879f904f865b15</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewBook</display-name>
+    <servlet-name>ViewBook</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBook</servlet-name>
+    <url-pattern>/ViewBook</url-pattern>
+    <url-pattern>/c2afe6d7c1571d1be0662147497afce7</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewBookAdmin</display-name>
+    <servlet-name>ViewBookAdmin</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewBookAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBookAdmin</servlet-name>
+    <url-pattern>/ViewBookAdmin</url-pattern>
+    <url-pattern>/43a9dd4a7fb3bd15cb9d3aa302f867e1</url-pattern>
+  </servlet-mapping>
 </web-app>

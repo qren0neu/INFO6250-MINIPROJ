@@ -57,6 +57,7 @@ public class Controller extends HttpServlet {
         roleMapUser.put(Constants.ACTION_VIEW_USER, Constants.HASH_VIEW_USER);
         roleMapUser.put(Constants.ACTION_EDIT_USER, Constants.HASH_EDIT_USER);
         roleMapUser.put(Constants.ACTION_UPDATE_USER, Constants.HASH_UPDATE_USER);
+        roleMapUser.put(Constants.ACTION_VIEW_BOOK, Constants.HASH_VIEW_BOOK);
 
         roleMapAdmin.put(Constants.ACTION_DASHBOARD, Constants.HASH_DASHBOARD_ADMIN);
         roleMapAdmin.put(Constants.ACTION_BOOKS, Constants.HASH_BOOKS_ADMIN);
@@ -65,6 +66,7 @@ public class Controller extends HttpServlet {
         roleMapAdmin.put(Constants.ACTION_VIEW_USER, Constants.HASH_VIEW_USER_ADMIN);
         roleMapAdmin.put(Constants.ACTION_EDIT_USER, Constants.HASH_EDIT_USER_ADMIN);
         roleMapAdmin.put(Constants.ACTION_UPDATE_USER, Constants.HASH_UPDATE_USER);
+        roleMapAdmin.put(Constants.ACTION_VIEW_BOOK, Constants.HASH_VIEW_BOOK_ADMIN);
     }
 
     /**

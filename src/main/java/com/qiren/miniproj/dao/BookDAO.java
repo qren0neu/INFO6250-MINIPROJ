@@ -77,6 +77,36 @@ public class BookDAO {
 
 		return bookBean;
 	}
+	
+	public BookBean getBookById(String bookId) {
+
+        BookBean bookBean = null;
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "select * from book where pkBook = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, bookId);
+            ResultSet res = ps.executeQuery();
+            if (res.next()) {
+                bookBean = new BookBean();
+                bookBean.setPkBook(res.getString("pkBook"));
+                bookBean.setISBN(res.getString("ISBN"));
+                bookBean.setName(res.getString("name"));
+                bookBean.setAuthor(res.getString("author"));
+                bookBean.setPublisher(res.getString("publisher"));
+                bookBean.setInstock(res.getString("instock"));
+                bookBean.setDescription(res.getString("description"));
+                bookBean.setCoverimg(res.getString("coverimg"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        ConnectionManager.closeConnection(connection);
+
+        return bookBean;
+    }
 
 	/**
 	 * Create a book, regardless of it exists or not. Please make sure check it

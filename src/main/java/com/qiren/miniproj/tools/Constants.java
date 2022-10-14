@@ -12,6 +12,9 @@ public class Constants {
     public static final String PARAM_USER_NAME = "username";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_USER_BEAN = "userbean";
+    public static final String PARAM_BOOK_BEAN = "bookbean";
+    public static final String PARAM_BOOK_LIST = "bookbeanList";
+    public static final String PARAM_BOOK_ID = "bookid";
     public static final String PARAM_USER_LIST = "userlist";
 	
 	/* Online MD5 hash: https://emn178.github.io/online-tools/md5.html */
@@ -30,12 +33,16 @@ public class Constants {
 	public static final String HASH_EDIT_USER = "749939bff702a796497ea19dc5b232eb";
 	public static final String HASH_EDIT_USER_ADMIN = "d8be84302730ef5d89825aef69d43618";
     public static final String HASH_UPDATE_USER = "2a855962fb7085847e6d1ba96545692a";
+    public static final String HASH_VIEW_BOOK = "c2afe6d7c1571d1be0662147497afce7";
+    public static final String HASH_VIEW_BOOK_ADMIN = "43a9dd4a7fb3bd15cb9d3aa302f867e1";
 	
 	public static final String ACTION_LOGIN = "login";
     public static final String ACTION_LOGOUT = "logout";
 	public static final String ACTION_REGISTER = "register";
 	public static final String ACTION_DASHBOARD = "dashboard";
     public static final String ACTION_BOOKS = "books";
+    public static final String ACTION_VIEW_BOOK = "viewBook";
+    public static final String ACTION_EDIT_BOOKS = "editBooks";
     public static final String ACTION_BOOK_ORDER = "bookOrder";
     public static final String ACTION_USER_LIST = "userList";
     public static final String ACTION_VIEW_USER = "viewUser";
@@ -52,4 +59,8 @@ public class Constants {
     public static final String PAGE_VIEW_USER = WEB_INF + "user/viewInfo.jsp";
     public static final String PAGE_EDIT_USER = WEB_INF + "user/editInfo.jsp";
     public static final String PAGE_USER_LIST = WEB_INF + "user/viewList.jsp";
+    public static final String PAGE_BOOK_LIST = WEB_INF + "book/bookList.jsp";
+    public static final String PAGE_BOOK_LIST_ADMIN = WEB_INF + "book/bookListAdmin.jsp";
+    public static final String PAGE_VIEW_BOOK = WEB_INF + "book/viewBook.jsp";
+    public static final String PAGE_VIEW_BOOK_ADMIN = WEB_INF + "book/viewBookAdmin.jsp";
 }

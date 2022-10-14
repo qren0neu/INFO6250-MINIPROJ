@@ -17,6 +17,10 @@ public class BookService {
 		return bookdao.getBookList();
 	}
 
+    public BookBean getBook(String id) {
+        return bookdao.getBookById(id);
+    }
+
 	public boolean addNewBook(BookBean book) {
 		if (null == bookdao.getBook(book.getISBN())) {
 			bookdao.createBook(book);
@@ -30,7 +34,7 @@ public class BookService {
 	}
 
 	private static class Inner {
-		static BookService instance;
+		static BookService instance = new BookService();
 	}
 
 }

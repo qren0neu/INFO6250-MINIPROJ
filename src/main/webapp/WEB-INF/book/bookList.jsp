@@ -1,6 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page import="com.qiren.miniproj.bean.UserBean"%>
-<%@ page import="com.qiren.miniproj.bean.UserRegistrationBean"%>
+<%@ page import="com.qiren.miniproj.bean.BookBean"%>
 <%@page import="com.qiren.miniproj.tools.Constants"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -82,7 +81,7 @@ tfoot td {
 	<form action="./controller" method="POST">
 		<table>
 			<!--The caption element <caption> represents the title of the table.-->
-			<caption>User List</caption>
+			<caption>Book List</caption>
 			<thead>
 				<tr>
 					<th scope="col">Select</th>
@@ -92,14 +91,14 @@ tfoot td {
 			</thead>
 			<tbody>
 				<%
-				for (UserBean userBean : (ArrayList<UserBean>) request.getAttribute(Constants.PARAM_USER_LIST)) {
-					UserRegistrationBean registeredUser = userBean.getUserBean();
+				for (BookBean bookBean : (ArrayList<BookBean>) request.getAttribute(Constants.PARAM_BOOK_LIST)) {
+					
 				%>
 				<tr>
-					<td><input type="radio" name="<%= Constants.PARAM_USER_NAME %>"
-						value="<%=registeredUser.getUsername()%>" /></td>
-					<td><%=registeredUser.getFname()%></td>
-					<td><%=registeredUser.getLname()%></td>
+					<td><input type="radio" name="<%= Constants.PARAM_BOOK_ID %>"
+						value="<%=bookBean.getPkBook()%>" /></td>
+					<td><%=bookBean.getName()%></td>
+					<td><%=bookBean.getAuthor()%></td>
 
 				</tr>
 				<%
@@ -118,7 +117,7 @@ tfoot td {
 			</tfoot>
 
 		</table>
-		<input type="hidden" name="action" value="viewUser">
+		<input type="hidden" name="action" value="viewBook">
 		<button type="submit" class="w3-button w3-right w3-light-gray"
 			style="margin-right: 250px; margin-bottom: 120px;">Submit</button>
 	</form>

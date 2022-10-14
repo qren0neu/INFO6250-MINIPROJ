@@ -28,7 +28,7 @@
 	UserRegistrationBean regisBean = userBean.getUserBean();
 	%>
 	<div class="main-block">
-		<form action="controller?action=updateUser" method="post">
+		<form action="controller" method="post">
 			<h1>Edit Personal Info</h1>
 			<fieldset>
 				<legend>
@@ -111,6 +111,7 @@
 			<p style="color: gray;">Page powered by w3docs:
 				https://www.w3docs.com/learn-html/html-form-templates.html</p>
 			<button type="submit" href="/">Submit</button>
+		<input type="hidden" name="action" value="updateUser">
 		</form>
 	</div>
 </body>
