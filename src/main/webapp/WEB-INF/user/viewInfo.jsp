@@ -164,7 +164,7 @@ tfoot td {
 		</tfoot>
 	</table>
 
-	<form action="controller?action=editUser" method="post">
+	<form action="controller" method="post">
 		<input type="hidden" name="action" value="editUser">
 		<input type="hidden" name="<%= Constants.PARAM_USER_NAME %>" value="<%=regisBean.getUsername()%>">
 		<button class="w3-button w3-right w3-light-gray"
