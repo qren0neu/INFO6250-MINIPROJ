@@ -52,7 +52,7 @@
             </div>
             <h1>Congrats!</h1>
             <p>Thank you ${param['fname']}</p>
-            <p>You have Successfully Registered</p>
+            <!-- <p>You have Successfully Registered</p> -->
             <p>Go back to main page in 3 seconds...</p>
             <label>Powered by <a href="https://codepen.io/warrendunlop/pen/YmVKzm">CodePen</a>, Author Warren
                 Dunlop</label>

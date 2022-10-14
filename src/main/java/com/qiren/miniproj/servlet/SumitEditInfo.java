@@ -7,22 +7,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.qiren.miniproj.bean.UserBean;
-import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.UserService;
 import com.qiren.miniproj.tools.Constants;
 
 /**
- * Servlet implementation class EditSelfInfoAdmin
+ * Servlet implementation class SumitEditInfo
  */
-public class EditSelfInfoAdmin extends HttpServlet {
+public class SumitEditInfo extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditSelfInfoAdmin() {
+    public SumitEditInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +32,7 @@ public class EditSelfInfoAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // TODO Auto-generated method stub
-        // if we have username sent by request, we use that instead of our own.
-        if (!ServletManager.getInstance().refererCheck(request, response)) {
-            return;
-        }
-        String userName = request.getParameter(Constants.PARAM_USER_NAME);
-        if (null == userName || userName.isBlank()) {
-            userName = SessionManager.getInstance().getUserName(request);
-        }
-        if (null != userName) {
-            UserBean userBean = UserService.getInstance().getUserInfo(userName);
-            request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
-            request.getRequestDispatcher(Constants.PAGE_EDIT_USER).forward(request, response);
-        }
+        response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
@@ -56,7 +42,22 @@ public class EditSelfInfoAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // TODO Auto-generated method stub
-        doGet(request, response);
+        String userId = request.getParameter("userid");
+        boolean logout = false;
+        if (userId.equals(SessionManager.getInstance().getUserId(request))) {
+            logout = true;
+        }
+        boolean result = UserService.getInstance().updateUserInfo(request, response);
+
+        if (result) {
+            request.getRequestDispatcher(Constants.PAGE_SUCCESS).forward(request, response);
+            // if we change the user info successfully, we may want to logout directly
+            if (logout) {
+                SessionManager.getInstance().endSession(request);
+            }
+        } else {
+            request.getRequestDispatcher(Constants.PAGE_FAILED).forward(request, response);
+        }
     }
 
 }

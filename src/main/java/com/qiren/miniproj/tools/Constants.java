@@ -12,6 +12,7 @@ public class Constants {
     public static final String PARAM_USER_NAME = "username";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_USER_BEAN = "userbean";
+    public static final String PARAM_USER_LIST = "userlist";
 	
 	/* Online MD5 hash: https://emn178.github.io/online-tools/md5.html */
 	public static final String HASH_LOGIN = "d56b699830e77ba53855679cb1d252da";
@@ -28,7 +29,8 @@ public class Constants {
     public static final String HASH_VIEW_USER_ADMIN = "2ec3dca8e1a81194fb071dd330492a22";
 	public static final String HASH_EDIT_USER = "749939bff702a796497ea19dc5b232eb";
 	public static final String HASH_EDIT_USER_ADMIN = "d8be84302730ef5d89825aef69d43618";
-    
+    public static final String HASH_UPDATE_USER = "2a855962fb7085847e6d1ba96545692a";
+	
 	public static final String ACTION_LOGIN = "login";
     public static final String ACTION_LOGOUT = "logout";
 	public static final String ACTION_REGISTER = "register";
@@ -38,6 +40,7 @@ public class Constants {
     public static final String ACTION_USER_LIST = "userList";
     public static final String ACTION_VIEW_USER = "viewUser";
     public static final String ACTION_EDIT_USER = "editUser";
+    public static final String ACTION_UPDATE_USER = "updateUser";
     
     public static final String WEB_INF = "WEB-INF/";
     public static final String PAGE_LOGIN = WEB_INF + "login/login.jsp";
@@ -48,4 +51,5 @@ public class Constants {
     public static final String PAGE_DASHBOARD_ADMIN = WEB_INF + "dashboard/adminDashboard.jsp";
     public static final String PAGE_VIEW_USER = WEB_INF + "user/viewInfo.jsp";
     public static final String PAGE_EDIT_USER = WEB_INF + "user/editInfo.jsp";
+    public static final String PAGE_USER_LIST = WEB_INF + "user/viewList.jsp";
 }

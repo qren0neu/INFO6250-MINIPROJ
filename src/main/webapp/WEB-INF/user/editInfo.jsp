@@ -28,7 +28,7 @@
 	UserRegistrationBean regisBean = userBean.getUserBean();
 	%>
 	<div class="main-block">
-		<form action="controller?action=editUser" method="post">
+		<form action="controller?action=updateUser" method="post">
 			<h1>Edit Personal Info</h1>
 			<fieldset>
 				<legend>

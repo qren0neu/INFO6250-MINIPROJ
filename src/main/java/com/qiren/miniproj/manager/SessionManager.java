@@ -22,7 +22,7 @@ public class SessionManager {
         HttpSession session = request.getSession();
         SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
         Utils.log("Check Session: " + bean);
-        if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
+        if (null != bean && null != bean.getUserName() && !bean.getUserName().isBlank()) {
             return true;
         }
         return false;
@@ -32,7 +32,7 @@ public class SessionManager {
         HttpSession session = request.getSession();
         SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
         Utils.log("Get role: " + bean);
-        if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
+        if (null != bean && null != bean.getUserName() && !bean.getUserName().isBlank()) {
             return bean.getRole();
         }
         return null;
@@ -42,25 +42,37 @@ public class SessionManager {
         HttpSession session = request.getSession();
         SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
         Utils.log("Get UserName: " + bean);
+        if (null != bean && null != bean.getUserName() && !bean.getUserName().isBlank()) {
+            return bean.getUserName();
+        }
+        return null;
+    }
+    
+    public String getUserId(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
+        Utils.log("Get UserName: " + bean);
         if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
             return bean.getUserId();
         }
         return null;
     }
 
+
     /**
      * Begin their session for newly login users.
      */
-    public void beginSession(HttpServletRequest request, String userId, String fname) {
+    public void beginSession(HttpServletRequest request, String userId, String userName, String fname) {
         // default we use role as user
-        beginSession(request, userId, fname, Constants.ROLE_USER);
+        beginSession(request, userId, userName, fname, Constants.ROLE_USER);
     }
 
     public void beginSession(HttpServletRequest request,
-            String userId, String fname, String role) {
+            String userId, String userName, String fname, String role) {
         SessionBean sessionBean = new SessionBean();
         sessionBean.setFname(fname);
         sessionBean.setUserId(userId);
+        sessionBean.setUserName(userName);
         sessionBean.setRole(role);
         HttpSession session = request.getSession();
         session.setAttribute(SESSION_KEY, sessionBean);

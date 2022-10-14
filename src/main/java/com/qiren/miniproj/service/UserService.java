@@ -1,5 +1,7 @@
 package com.qiren.miniproj.service;
 
+import java.util.List;
+
 import com.qiren.miniproj.bean.UserBean;
 import com.qiren.miniproj.bean.UserRegistrationBean;
 import com.qiren.miniproj.dao.UserDAO;
@@ -110,6 +112,10 @@ public class UserService {
 
     public UserBean getUserInfo(String username, String password) {
         return userdao.getUserInfo(username, password);
+    }
+
+    public List<UserBean> getAllUser() {
+        return userdao.getAllUserInfo();
     }
 
     public boolean checkLoginInfo(String username, String password) {

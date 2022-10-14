@@ -2,9 +2,18 @@ package com.qiren.miniproj.bean;
 
 public class SessionBean {
 	
+    private String userName;
 	private String userId;
 	private String fname;
 	private String role;
+	
+	public void setUserName(String userName) {
+        this.userName = userName;
+    }
+	
+	public String getUserName() {
+        return userName;
+    }
 	
 	public void setUserId(String userId) {
 		this.userId = userId;

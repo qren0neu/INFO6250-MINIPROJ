@@ -122,4 +122,26 @@
     <url-pattern>/EditSelfInfoAdmin</url-pattern>
     <url-pattern>/d8be84302730ef5d89825aef69d43618</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewUserList</display-name>
+    <servlet-name>ViewUserList</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ViewUserList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewUserList</servlet-name>
+    <url-pattern>/ViewUserList</url-pattern>
+    <url-pattern>/5c73f6e9fdbea4754eacff95793589c4</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SumitEditInfo</display-name>
+    <servlet-name>SumitEditInfo</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.SumitEditInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SumitEditInfo</servlet-name>
+    <url-pattern>/SumitEditInfo</url-pattern>
+    <url-pattern>/2a855962fb7085847e6d1ba96545692a</url-pattern>
+  </servlet-mapping>
 </web-app>

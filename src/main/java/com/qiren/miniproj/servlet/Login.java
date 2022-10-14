@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
         if (null != userbean) {
             // we have that user
             SessionManager.getInstance().beginSession(
-                    request, username, 
+                    request, userbean.getUserId(), username, 
                     userbean.getUserBean().getFname(), userbean.getUserBean().getRole());
 
             response.sendRedirect("controller?action=dashboard");
