@@ -221,4 +221,15 @@
     <url-pattern>/EditBook</url-pattern>
     <url-pattern>/fe99e4ee55f6d178da0c41d9a3e7fbe3</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BorrowBook</display-name>
+    <servlet-name>BorrowBook</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.BorrowBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BorrowBook</servlet-name>
+    <url-pattern>/BorrowBook</url-pattern>
+    <url-pattern>/0343c14996b0caccc4254839d190a8a5</url-pattern>
+  </servlet-mapping>
 </web-app>

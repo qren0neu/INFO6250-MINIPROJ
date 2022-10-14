@@ -38,6 +38,7 @@ public class Constants {
     public static final String HASH_VIEW_BOOK_ADMIN = "43a9dd4a7fb3bd15cb9d3aa302f867e1";
     public static final String HASH_ADD_BOOK = "3fdb59b0d7ebab342efbfa4c6a887a35";
     public static final String HASH_UPDATE_BOOK = "2dad20d690fb0f94ea84dd164ab40634";
+    public static final String HASH_BORROW_BOOK = "0343c14996b0caccc4254839d190a8a5";
 
     public static final String ACTION_LOGIN = "login";
     public static final String ACTION_LOGOUT = "logout";
@@ -53,6 +54,8 @@ public class Constants {
     public static final String ACTION_UPDATE_USER = "updateUser";
     public static final String ACTION_ADD_BOOK = "addBook";
     public static final String ACTION_UPDATE_BOOK = "updateBook";
+    public static final String ACTION_BORROW_BOOK = "borrowBook";
+    public static final String ACTION_RETURN_BOOK = "returnBook";
 
     public static final String WEB_INF = "WEB-INF/";
     public static final String PAGE_LOGIN = WEB_INF + "login/login.jsp";

@@ -142,8 +142,8 @@ tfoot td {
 			type="hidden" name="<%=Constants.PARAM_BOOK_ID%>"
 			value="<%=bookBean.getPkBook()%>">
 		<button class="w3-button w3-right w3-light-gray"
-			style="margin-right: 250px; margin-bottom: 120px;">Edit BOOK
-			Info</button>
+			style="margin-right: 250px; margin-bottom: 120px;">Edit Book
+			</button>
 	</form>
 
 </body>

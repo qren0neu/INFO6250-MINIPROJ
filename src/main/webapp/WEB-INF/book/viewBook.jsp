@@ -136,13 +136,12 @@ tfoot td {
 		</tfoot>
 	</table>
 
-	<%-- <form action="controller" method="post">
-		<input type="hidden" name="action" value="<%= Constants.ACTION_EDIT_BOOKS %>">
+	<form action="controller" method="post">
+		<input type="hidden" name="action" value="<%= Constants.ACTION_BORROW_BOOK %>">
 		<input type="hidden" name="<%= Constants.PARAM_BOOK_ID %>" value="<%=bookBean.getPkBook()%>">
 		<button class="w3-button w3-right w3-light-gray"
-			style="margin-right: 250px; margin-bottom: 120px;">Edit BOOK
-			Info</button>
-	</form> --%>
+			style="margin-right: 250px; margin-bottom: 120px;">Borrow</button>
+	</form>
 
 </body>
 
