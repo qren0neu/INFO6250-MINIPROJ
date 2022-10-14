@@ -188,4 +188,15 @@
     <url-pattern>/ViewBookAdmin</url-pattern>
     <url-pattern>/43a9dd4a7fb3bd15cb9d3aa302f867e1</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddBook</display-name>
+    <servlet-name>AddBook</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.AddBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddBook</servlet-name>
+    <url-pattern>/AddBook</url-pattern>
+    <url-pattern>/3fdb59b0d7ebab342efbfa4c6a887a35</url-pattern>
+  </servlet-mapping>
 </web-app>

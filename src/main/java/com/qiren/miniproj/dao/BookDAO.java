@@ -127,6 +127,8 @@ public class BookDAO {
 			ps.setString(6, book.getDescription());
 			ps.setString(7, book.getInstock());
 			ps.setString(8, book.getCoverimg());
+			
+			ps.execute();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

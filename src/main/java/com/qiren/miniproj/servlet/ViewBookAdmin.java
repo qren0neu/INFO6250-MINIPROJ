@@ -42,7 +42,7 @@ public class ViewBookAdmin extends HttpServlet {
         BookBean bb = BookService.getInstance().getBook(bookId);
 
         request.setAttribute(Constants.PARAM_BOOK_BEAN, bb);
-        request.getRequestDispatcher(Constants.PAGE_VIEW_BOOK).forward(request, response);
+        request.getRequestDispatcher(Constants.PAGE_VIEW_BOOK_ADMIN).forward(request, response);
     }
 
     /**

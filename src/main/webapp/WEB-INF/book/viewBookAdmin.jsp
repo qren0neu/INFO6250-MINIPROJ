@@ -80,7 +80,7 @@ tfoot td {
 	<!--The table element represents data in a series of rows and columns. Tables should only be used for displaying tabular data, and never for page layout.-->
 	<table>
 		<!--The caption element <caption> represents the title of the table.-->
-		<caption>Personal Information</caption>
+		<caption>Book Information</caption>
 		<!--The table head element <thead> (not to be confused with the table header cell element) defines a set of rows that make up the header of a table.-->
 		<thead>
 			<!--The table row element <tr> defines a row of cells in a table. Table rows can be filled with table cells and table header cells.-->
@@ -100,27 +100,27 @@ tfoot td {
 			BookBean bookBean = (BookBean) request.getAttribute(Constants.PARAM_BOOK_BEAN);
 			%>
 			<tr>
-				<th scope="row">First Name</th>
+				<th scope="row">ISBN</th>
 				<td><%=bookBean.getISBN()%></td>
 			</tr>
 			<tr>
-				<th scope="row">Last Name</th>
+				<th scope="row">Book Name</th>
 				<td><%=bookBean.getName()%></td>
 			</tr>
 			<tr>
-				<th scope="row">Address</th>
+				<th scope="row">Author</th>
 				<td><%=bookBean.getAuthor()%></td>
 			</tr>
 			<tr>
-				<th scope="row">City</th>
+				<th scope="row">Publisher</th>
 				<td><%=bookBean.getPublisher()%></td>
 			</tr>
 			<tr>
-				<th scope="row">State</th>
+				<th scope="row">Description</th>
 				<td><%=bookBean.getDescription()%></td>
 			</tr>
 			<tr>
-				<th scope="row">Postal Code</th>
+				<th scope="row">In Stock</th>
 				<td><%=bookBean.getInstock()%></td>
 			</tr>
 		</tbody>
@@ -137,8 +137,10 @@ tfoot td {
 	</table>
 
 	<form action="controller" method="post">
-		<input type="hidden" name="action" value="<%= Constants.ACTION_EDIT_BOOKS %>">
-		<input type="hidden" name="<%= Constants.PARAM_BOOK_ID %>" value="<%=bookBean.getPkBook()%>">
+		<input type="hidden" name="action"
+			value="<%=Constants.ACTION_EDIT_BOOKS%>"> <input
+			type="hidden" name="<%=Constants.PARAM_BOOK_ID%>"
+			value="<%=bookBean.getPkBook()%>">
 		<button class="w3-button w3-right w3-light-gray"
 			style="margin-right: 250px; margin-bottom: 120px;">Edit BOOK
 			Info</button>

@@ -92,10 +92,9 @@ tfoot td {
 			<tbody>
 				<%
 				for (BookBean bookBean : (ArrayList<BookBean>) request.getAttribute(Constants.PARAM_BOOK_LIST)) {
-					
 				%>
 				<tr>
-					<td><input type="radio" name="<%= Constants.PARAM_BOOK_ID %>"
+					<td><input type="radio" name="<%=Constants.PARAM_BOOK_ID%>"
 						value="<%=bookBean.getPkBook()%>" /></td>
 					<td><%=bookBean.getName()%></td>
 					<td><%=bookBean.getAuthor()%></td>
@@ -120,8 +119,11 @@ tfoot td {
 		<input type="hidden" name="action" value="viewBook">
 		<button type="submit" class="w3-button w3-right w3-light-gray"
 			style="margin-right: 250px; margin-bottom: 120px;">Submit</button>
-		<button type="submit" class="w3-button w3-left w3-light-gray"
-			style="margin-left: 250px; margin-bottom: 120px;">Add Book</button>
+	</form>
+	<form action="controller" method="get">
+		<input type="hidden" name="action" value="addBook">
+		<button type="submit" class="w3-button w3-right w3-light-gray"
+			style="margin-right: 250px; margin-bottom: 120px;">Add Book</button>
 	</form>
 
 

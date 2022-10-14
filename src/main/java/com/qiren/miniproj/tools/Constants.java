@@ -35,6 +35,7 @@ public class Constants {
     public static final String HASH_UPDATE_USER = "2a855962fb7085847e6d1ba96545692a";
     public static final String HASH_VIEW_BOOK = "c2afe6d7c1571d1be0662147497afce7";
     public static final String HASH_VIEW_BOOK_ADMIN = "43a9dd4a7fb3bd15cb9d3aa302f867e1";
+    public static final String HASH_ADD_BOOK = "3fdb59b0d7ebab342efbfa4c6a887a35";
 	
 	public static final String ACTION_LOGIN = "login";
     public static final String ACTION_LOGOUT = "logout";
@@ -48,6 +49,7 @@ public class Constants {
     public static final String ACTION_VIEW_USER = "viewUser";
     public static final String ACTION_EDIT_USER = "editUser";
     public static final String ACTION_UPDATE_USER = "updateUser";
+    public static final String ACTION_ADD_BOOK = "addBook";
     
     public static final String WEB_INF = "WEB-INF/";
     public static final String PAGE_LOGIN = WEB_INF + "login/login.jsp";
@@ -63,4 +65,5 @@ public class Constants {
     public static final String PAGE_BOOK_LIST_ADMIN = WEB_INF + "book/bookListAdmin.jsp";
     public static final String PAGE_VIEW_BOOK = WEB_INF + "book/viewBook.jsp";
     public static final String PAGE_VIEW_BOOK_ADMIN = WEB_INF + "book/viewBookAdmin.jsp";
+    public static final String PAGE_ADD_BOOK = WEB_INF + "book/addBook.jsp";
 }
