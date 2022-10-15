@@ -46,14 +46,31 @@ public class SumitEditInfo extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         String userId = request.getParameter("userid");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         boolean logout = false;
-        if (userId.equals(SessionManager.getInstance().getUserId(request))) {
+        boolean isSelf = userId.equals(SessionManager.getInstance().getUserId(request));
+        if (isSelf && ((null != password && !password.isBlank())
+                || !SessionManager.getInstance().getUserName(request).equals(username))) {
+            // we are the user ourselves
+            // we have changed password
+            // or we have changed username
             logout = true;
         }
         boolean result = UserService.getInstance().updateUserInfo(request, response);
 
         if (result) {
-            request.setAttribute("fname", request.getParameter("fname"));
+            if (isSelf) {
+                request.setAttribute("fname", request.getParameter("fname"));
+            } else {
+                String name = UserService.getInstance()
+                        .getUserInfo(SessionManager.getInstance().getUserName(request))
+                        .getUserBean().getFname();
+                request.setAttribute("fname", name);
+            }
+            if (logout) {
+                request.setAttribute("returnTo", "./");
+            }
             request.getRequestDispatcher(Constants.PAGE_SUCCESS).forward(request, response);
             // if we change the user info successfully, we may want to logout directly
             if (logout) {

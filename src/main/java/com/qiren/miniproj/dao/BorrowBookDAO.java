@@ -40,16 +40,17 @@ public class BorrowBookDAO {
         return bookBean;
     }
 
-    public BorrowBookBean findBorrowByBookNotReturn(String pkBook) {
+    public BorrowBookBean findBorrowByBookNotReturn(String userId, String pkBook) {
 
         BorrowBookBean bookBean = null;
 
         Connection connection = ConnectionManager.getConnection();
 
         // get book not returned
-        String sql = "select * from borrow_book where fkBook = ? && toDate is null";
+        String sql = "select * from borrow_book where fkUser = ? && fkBook = ? && toDate is null";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, pkBook);
+            ps.setString(1, userId);
+            ps.setString(2, pkBook);
             ResultSet res = ps.executeQuery();
             if (res.next()) {
                 bookBean = new BorrowBookBean();

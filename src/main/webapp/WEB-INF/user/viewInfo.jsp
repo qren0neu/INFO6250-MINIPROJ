@@ -175,7 +175,8 @@ tfoot td {
 	</form>
 
 	<%
-	if (Constants.ROLE_STAFF.equals(SessionManager.getInstance().getRole(request))) {
+	if (Constants.ROLE_STAFF.equals(SessionManager.getInstance().getRole(request))
+			&& !SessionManager.getInstance().getUserId(request).equals(userBean.getUserId())) {
 	%>
 
 

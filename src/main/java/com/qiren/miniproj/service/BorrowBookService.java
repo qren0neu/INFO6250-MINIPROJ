@@ -36,7 +36,8 @@ public class BorrowBookService {
         if (stockInt <= 0) {
             return "No book available now";
         }
-        BorrowBookBean borrowHistory = borrowBookDAO.findBorrowByBookNotReturn(bookId);
+        BorrowBookBean borrowHistory = borrowBookDAO
+                .findBorrowByBookNotReturn(SessionManager.getInstance().getUserId(request), bookId);
         // find if this book is borrowed and not returned
         if (null != borrowHistory) {
             return "You have borrowed this book and not returned";
@@ -53,7 +54,7 @@ public class BorrowBookService {
         // return error message, null means no error
         return null;
     }
-    
+
     public List<BorrowBookBean> getBorrowList(HttpServletRequest request,
             HttpServletResponse response) {
         List<BorrowBookBean> borrowList;
@@ -70,11 +71,11 @@ public class BorrowBookService {
             HttpServletResponse response) {
         String pkBorrowBook = request.getParameter(Constants.PARAM_BORROW_ID);
         BorrowBookBean bean = borrowBookDAO.findBorrowBookBeanById(pkBorrowBook);
-        
+
         if (null != bean.getToDate()) {
             return "This book is already returned";
         }
-        
+
         String fkBook = bean.getFkBook();
         BookBean bookBean = BookService.getInstance().getBook(fkBook);
         String inStock = bookBean.getInstock();
@@ -82,7 +83,7 @@ public class BorrowBookService {
         bookBean.setInstock("" + (stock + 1));
         // update stock
         BookService.getInstance().updateBook(bookBean);
-        
+
         if (borrowBookDAO.updateReturnDate(pkBorrowBook)) {
             return null;
         }
