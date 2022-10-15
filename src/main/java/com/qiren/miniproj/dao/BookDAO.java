@@ -136,6 +136,25 @@ public class BookDAO {
             ConnectionManager.closeConnection(connection);
         }
     }
+    
+    public void deleteBook(String pkBook) {
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "delete from book where pkBook = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            // ps.setString(1, null);
+            ps.setString(1, pkBook);
+
+            ps.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
+    }
 
     public boolean updateBook(BookBean book) {
         Connection connection = ConnectionManager.getConnection();

@@ -102,7 +102,7 @@ tfoot td {
 				<tr>
 					<th scope="row">ISBN</th>
 					<td><input type="text" name="ISBN" pattern="[0-9]{10}"
-						required></td>
+						maxlength="10" required></td>
 				</tr>
 				<tr>
 					<th scope="row">Book Name</th>

@@ -121,6 +121,10 @@ public class UserService {
     public boolean checkLoginInfo(String username, String password) {
         return null != userdao.getUserInfo(username, password);
     }
+    
+    public void deleteUser(String userId) {
+        userdao.deleteUser(userId);
+    }
 
     public static UserService getInstance() {
         return Inner.instance;

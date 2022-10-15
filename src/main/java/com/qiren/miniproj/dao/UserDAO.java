@@ -242,4 +242,23 @@ public class UserDAO {
 
         return true;
     }
+    
+    public void deleteUser(String pk) {
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "delete from user where pkUser = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            // ps.setString(1, null);
+            ps.setString(1, pk);
+
+            ps.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
+    }
 }

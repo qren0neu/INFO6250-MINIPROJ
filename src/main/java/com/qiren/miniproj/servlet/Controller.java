@@ -74,6 +74,8 @@ public class Controller extends HttpServlet {
         roleMapAdmin.put(Constants.ACTION_EDIT_BOOKS, Constants.HASH_EDIT_BOOKS);
         roleMapAdmin.put(Constants.ACTION_BORROW_BOOK, Constants.HASH_BORROW_BOOK);
         roleMapAdmin.put(Constants.ACTION_RETURN_BOOK, Constants.HASH_RETURN_BOOK);
+        roleMapAdmin.put(Constants.ACTION_DELETE_USER, Constants.HASH_DELETE_USER);
+        roleMapAdmin.put(Constants.ACTION_DELETE_BOOK, Constants.HASH_DELETE_BOOK);
     }
 
     /**

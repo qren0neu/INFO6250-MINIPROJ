@@ -143,7 +143,15 @@ tfoot td {
 			value="<%=bookBean.getPkBook()%>">
 		<button class="w3-button w3-right w3-light-gray"
 			style="margin-right: 250px; margin-bottom: 120px;">Edit Book
-			</button>
+		</button>
+	</form>
+	<form action="controller" method="post">
+		<input type="hidden" name="action" value="deleteBook"> <input
+			type="hidden" name="<%=Constants.PARAM_BOOK_ID%>"
+			value="<%=bookBean.getPkBook()%>">
+		<button type="submit" class="w3-button w3-right w3-light-gray"
+			style="margin-right: 72px; margin-bottom: 120px;">Delete
+			Book</button>
 	</form>
 
 </body>

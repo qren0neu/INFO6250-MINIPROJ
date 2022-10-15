@@ -119,7 +119,7 @@ tfoot td {
 		</table>
 		<input type="hidden" name="action" value="viewBook">
 		<button type="submit" class="w3-button w3-right w3-light-gray"
-			style="margin-right: 250px; margin-bottom: 120px;">Submit</button>
+			style="margin-right: 250px; margin-bottom: 120px;">Check</button>
 	</form>
 
 

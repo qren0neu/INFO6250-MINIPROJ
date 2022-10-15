@@ -1,3 +1,4 @@
+<%@page import="com.qiren.miniproj.manager.SessionManager"%>
 <%@page import="com.qiren.miniproj.tools.Constants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -165,12 +166,31 @@ tfoot td {
 	</table>
 
 	<form action="controller" method="post">
-		<input type="hidden" name="action" value="editUser">
-		<input type="hidden" name="<%= Constants.PARAM_USER_NAME %>" value="<%=regisBean.getUsername()%>">
+		<input type="hidden" name="action" value="editUser"> <input
+			type="hidden" name="<%=Constants.PARAM_USER_NAME%>"
+			value="<%=regisBean.getUsername()%>">
 		<button class="w3-button w3-right w3-light-gray"
-			style="margin-right: 250px; margin-bottom: 120px;">Edit Personal
-			Info</button>
+			style="margin-right: 250px; margin-bottom: 120px;">Edit
+			Personal Info</button>
 	</form>
+
+	<%
+	if (Constants.ROLE_STAFF.equals(SessionManager.getInstance().getRole(request))) {
+	%>
+
+
+	<form action="controller" method="post">
+		<input type="hidden" name="action" value="deleteUser"> <input
+			type="hidden" name="userid"
+			value="<%=userBean.getUserId()%>">
+		<button type="submit" class="w3-button w3-right w3-light-gray"
+			style="margin-right: 72px; margin-bottom: 120px;">Delete
+			User</button>
+	</form>
+
+	<%
+	}
+	%>
 
 </body>
 

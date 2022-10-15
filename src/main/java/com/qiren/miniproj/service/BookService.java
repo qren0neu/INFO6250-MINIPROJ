@@ -7,38 +7,42 @@ import com.qiren.miniproj.dao.BookDAO;
 
 public class BookService {
 
-	private BookDAO bookdao = new BookDAO();
+    private BookDAO bookdao = new BookDAO();
 
-	private BookService() {
+    private BookService() {
 
-	}
+    }
 
-	public List<BookBean> getBookList() {
-		return bookdao.getBookList();
-	}
+    public List<BookBean> getBookList() {
+        return bookdao.getBookList();
+    }
 
     public BookBean getBook(String id) {
         return bookdao.getBookById(id);
     }
 
-	public boolean addNewBook(BookBean book) {
-		if (null == bookdao.getBook(book.getISBN())) {
-			bookdao.createBook(book);
-			return true;
-		}
-		return false;
-	}
+    public boolean addNewBook(BookBean book) {
+        if (null == bookdao.getBook(book.getISBN())) {
+            bookdao.createBook(book);
+            return true;
+        }
+        return false;
+    }
 
     public boolean updateBook(BookBean book) {
         return bookdao.updateBook(book);
     }
 
-	public static BookService getInstance() {
-		return Inner.instance;
-	}
+    public void deleteBook(String pkBook) {
+        bookdao.deleteBook(pkBook);
+    }
 
-	private static class Inner {
-		static BookService instance = new BookService();
-	}
+    public static BookService getInstance() {
+        return Inner.instance;
+    }
+
+    private static class Inner {
+        static BookService instance = new BookService();
+    }
 
 }

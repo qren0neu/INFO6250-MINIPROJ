@@ -243,4 +243,26 @@
     <url-pattern>/ReturnBook</url-pattern>
     <url-pattern>/e219df046b051c5bddbc8c6930d0d1a6</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteBook</display-name>
+    <servlet-name>DeleteBook</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.DeleteBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBook</servlet-name>
+    <url-pattern>/DeleteBook</url-pattern>
+    <url-pattern>/1ef216256c648f466edc32cfa6ef7ee4</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUser</display-name>
+    <servlet-name>DeleteUser</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.DeleteUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUser</servlet-name>
+    <url-pattern>/DeleteUser</url-pattern>
+    <url-pattern>/d26133fbf7f901dc7bc050e4da0f25b6</url-pattern>
+  </servlet-mapping>
 </web-app>
