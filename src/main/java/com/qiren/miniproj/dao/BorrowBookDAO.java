@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.qiren.miniproj.bean.BookBean;
 import com.qiren.miniproj.bean.BorrowBookBean;
@@ -60,5 +62,80 @@ public class BorrowBookDAO {
             ConnectionManager.closeConnection(connection);
         }
         return true;
+    }
+
+//    public boolean updateReturnDate() {
+//
+//    }
+
+    public List<BorrowBookBean> getBorrowList() {
+
+        Connection conn = ConnectionManager.getConnection();
+        List<BorrowBookBean> books = new ArrayList<>();
+        String sql = "select pkBorrowBook, fromDate, todate, `user`.username, book.`name`"
+                + " from borrow_book "
+                + " left join book "
+                + " on fkBook = pkBook "
+                + " left join `user` "
+                + " on fkUser = pkUser;";
+        System.out.println(sql);
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                BorrowBookBean bean = new BorrowBookBean();
+                bean.setPkBorrowBook(res.getString("pkBorrowBook"));
+                bean.setFromDate(res.getString("fromDate"));
+                bean.setToDate(res.getString("todate"));
+                bean.setFkUser(res.getString("username"));
+                bean.setFkBook(res.getString("name"));
+                books.add(bean);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(conn);
+        }
+        return books;
+    }
+
+    public List<BorrowBookBean> getBorrowListByUser(String userId) {
+
+        Connection conn = ConnectionManager.getConnection();
+        List<BorrowBookBean> books = new ArrayList<>();
+        String sql = "select pkBorrowBook, fromDate, todate, `user`.username, book.`name`"
+                + " from borrow_book "
+                + " left join book "
+                + " on fkBook = pkBook "
+                + " left join `user` "
+                + " on fkUser = pkUser "
+                + " where pkUser = ?;";
+
+        System.out.println(sql);
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, userId);
+
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                BorrowBookBean bean = new BorrowBookBean();
+                bean.setPkBorrowBook(res.getString("pkBorrowBook"));
+                bean.setFromDate(res.getString("fromDate"));
+                bean.setToDate(res.getString("todate"));
+                bean.setFkUser(res.getString("username"));
+                bean.setFkBook(res.getString("name"));
+                books.add(bean);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(conn);
+        }
+        return books;
     }
 }

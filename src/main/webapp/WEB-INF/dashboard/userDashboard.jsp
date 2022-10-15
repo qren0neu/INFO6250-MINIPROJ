@@ -27,7 +27,7 @@
 			<a href="controller?action=viewUser" class="w3-bar-item w3-button"><i
 				class="fa fa-user"></i> VIEW INFO</a> <a href="controller?action=books"
 				class="w3-bar-item w3-button"><i class="fa fa-th"></i> VIEW
-				BOOKS</a><a href="controller?action=books" class="w3-bar-item w3-button"><i
+				BOOKS</a><a href="controller?action=borrowBook" class="w3-bar-item w3-button"><i
 				class="fa fa-th"></i> VIEW BORROW</a> <a href="controller?action=logout"
 				class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>
 				LOGOUT</a>

@@ -1,6 +1,7 @@
 package com.qiren.miniproj.service;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import com.qiren.miniproj.bean.BookBean;
 import com.qiren.miniproj.bean.BorrowBookBean;
@@ -52,6 +53,23 @@ public class BorrowBookService {
         // return error message, null means no error
         return null;
     }
+    
+    public List<BorrowBookBean> getBorrowList(HttpServletRequest request,
+            HttpServletResponse response) {
+        List<BorrowBookBean> borrowList;
+        if (Constants.ROLE_STAFF.equals(SessionManager.getInstance().getRole(request))) {
+            borrowList = borrowBookDAO.getBorrowList();
+        } else {
+            borrowList = borrowBookDAO.getBorrowListByUser(
+                    SessionManager.getInstance().getUserId(request));
+        }
+        return borrowList;
+    }
+
+//    public String returnBook(HttpServletRequest request,
+//            HttpServletResponse response) {
+//        
+//    }
 
     public static BorrowBookService getInstance() {
         return Inner.instance;

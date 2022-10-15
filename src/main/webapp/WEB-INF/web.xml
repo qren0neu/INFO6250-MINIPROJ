@@ -232,4 +232,15 @@
     <url-pattern>/BorrowBook</url-pattern>
     <url-pattern>/0343c14996b0caccc4254839d190a8a5</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReturnBook</display-name>
+    <servlet-name>ReturnBook</servlet-name>
+    <servlet-class>com.qiren.miniproj.servlet.ReturnBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReturnBook</servlet-name>
+    <url-pattern>/ReturnBook</url-pattern>
+    <url-pattern>/e219df046b051c5bddbc8c6930d0d1a6</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -6,7 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
+import com.qiren.miniproj.bean.BorrowBookBean;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.BorrowBookService;
 import com.qiren.miniproj.service.UserService;
@@ -32,6 +34,9 @@ public class BorrowBook extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
+	    List<BorrowBookBean> borrowBookBean = BorrowBookService.getInstance().getBorrowList(request, response);
+	    request.setAttribute(Constants.PARAM_BORROW_LIST, borrowBookBean);
+	    request.getRequestDispatcher(Constants.PAGE_BORROW_BOOK).forward(request, response);
 	}
 
 	/**

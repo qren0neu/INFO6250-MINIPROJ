@@ -16,6 +16,7 @@ public class Constants {
     public static final String PARAM_BOOK_LIST = "bookbeanList";
     public static final String PARAM_BOOK_ID = "bookid";
     public static final String PARAM_USER_LIST = "userlist";
+    public static final String PARAM_BORROW_LIST = "borrowList";
 
     /* Online MD5 hash: https://emn178.github.io/online-tools/md5.html */
     public static final String HASH_LOGIN = "d56b699830e77ba53855679cb1d252da";
@@ -39,6 +40,7 @@ public class Constants {
     public static final String HASH_ADD_BOOK = "3fdb59b0d7ebab342efbfa4c6a887a35";
     public static final String HASH_UPDATE_BOOK = "2dad20d690fb0f94ea84dd164ab40634";
     public static final String HASH_BORROW_BOOK = "0343c14996b0caccc4254839d190a8a5";
+    public static final String HASH_RETURN_BOOK = "e219df046b051c5bddbc8c6930d0d1a6";
 
     public static final String ACTION_LOGIN = "login";
     public static final String ACTION_LOGOUT = "logout";
@@ -73,4 +75,5 @@ public class Constants {
     public static final String PAGE_VIEW_BOOK_ADMIN = WEB_INF + "book/viewBookAdmin.jsp";
     public static final String PAGE_ADD_BOOK = WEB_INF + "book/addBook.jsp";
     public static final String PAGE_EDIT_BOOK = WEB_INF + "book/editBook.jsp";
+    public static final String PAGE_BORROW_BOOK = WEB_INF + "book/viewBorrowBook.jsp";
 }
