@@ -62,6 +62,7 @@ public class SumitEditInfo extends HttpServlet {
         if (result) {
             if (isSelf) {
                 request.setAttribute("fname", request.getParameter("fname"));
+                SessionManager.getInstance().updateFirstName(request, request.getParameter("fname"));
             } else {
                 String name = UserService.getInstance()
                         .getUserInfo(SessionManager.getInstance().getUserName(request))

@@ -57,6 +57,15 @@ public class SessionManager {
         }
         return null;
     }
+    
+    public void updateFirstName(HttpServletRequest request, String fname) {
+        HttpSession session = request.getSession();
+        SessionBean bean = (SessionBean) session.getAttribute(SESSION_KEY);
+        Utils.log("Update Name: " + bean);
+        if (null != bean && null != bean.getUserId() && !bean.getUserId().isBlank()) {
+            bean.setFname(fname);;
+        }
+    }
 
 
     /**
