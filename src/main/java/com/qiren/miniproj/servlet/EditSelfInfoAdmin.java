@@ -38,15 +38,6 @@ public class EditSelfInfoAdmin extends HttpServlet {
         if (!ServletManager.getInstance().refererCheck(request, response)) {
             return;
         }
-        String userName = request.getParameter(Constants.PARAM_USER_NAME);
-        if (null == userName || userName.isBlank()) {
-            userName = SessionManager.getInstance().getUserName(request);
-        }
-        if (null != userName) {
-            UserBean userBean = UserService.getInstance().getUserInfo(userName);
-            request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
-            request.getRequestDispatcher(Constants.PAGE_EDIT_USER).forward(request, response);
-        }
     }
 
     /**
@@ -56,7 +47,16 @@ public class EditSelfInfoAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // TODO Auto-generated method stub
-        doGet(request, response);
+        // if we have username sent by request, we use that instead of our own.
+        String userName = request.getParameter(Constants.PARAM_USER_NAME);
+        if (null == userName || userName.isBlank()) {
+            userName = SessionManager.getInstance().getUserName(request);
+        }
+        if (null != userName) {
+            UserBean userBean = UserService.getInstance().getUserInfo(userName);
+            request.setAttribute(Constants.PARAM_USER_BEAN, userBean);
+            request.getRequestDispatcher(Constants.PAGE_EDIT_USER).forward(request, response);
+        }
     }
 
 }

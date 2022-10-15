@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.qiren.miniproj.bean.BookBean;
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.BookService;
 import com.qiren.miniproj.service.UserService;
@@ -17,8 +18,8 @@ import com.qiren.miniproj.tools.Constants;
  * Servlet implementation class UpdateBookInfo
  */
 public class UpdateBookInfo extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,20 +28,26 @@ public class UpdateBookInfo extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// doGet(request, response);
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        // doGet(request, response);
         BookBean bookBean = new BookBean();
         bookBean.setPkBook(request.getParameter("bookid"));
         bookBean.setAuthor(request.getParameter("author"));
@@ -61,6 +68,6 @@ public class UpdateBookInfo extends HttpServlet {
             request.setAttribute(Constants.PARAM_ERROR, "Update book failed");
             request.getRequestDispatcher(Constants.PAGE_FAILED).forward(request, response);
         }
-	}
+    }
 
 }

@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.qiren.miniproj.bean.BookBean;
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.service.BookService;
 import com.qiren.miniproj.tools.Constants;
 
@@ -33,6 +34,20 @@ public class ViewBook extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         // response.getWriter().append("Served at: ").append(request.getContextPath());
+
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+
         String bookId = request.getParameter(Constants.PARAM_BOOK_ID);
 
         if (null == bookId || bookId.isBlank()) {
@@ -45,16 +60,6 @@ public class ViewBook extends HttpServlet {
 
         request.setAttribute(Constants.PARAM_BOOK_BEAN, bb);
         request.getRequestDispatcher(Constants.PAGE_VIEW_BOOK).forward(request, response);
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
     }
 
 }

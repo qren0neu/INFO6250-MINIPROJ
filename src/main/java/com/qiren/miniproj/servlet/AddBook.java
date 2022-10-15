@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.qiren.miniproj.bean.BookBean;
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.BookService;
 import com.qiren.miniproj.service.UserService;
@@ -35,6 +36,9 @@ public class AddBook extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         // response.getWriter().append("Served at: ").append(request.getContextPath());
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
         request.getRequestDispatcher(Constants.PAGE_ADD_BOOK).forward(request, response);
     }
 

@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.qiren.miniproj.manager.ServletManager;
 import com.qiren.miniproj.manager.SessionManager;
 import com.qiren.miniproj.service.BorrowBookService;
 import com.qiren.miniproj.service.UserService;
@@ -16,8 +17,8 @@ import com.qiren.miniproj.tools.Constants;
  * Servlet implementation class ReturnBook
  */
 public class ReturnBook extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,20 +27,28 @@ public class ReturnBook extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        // response.getWriter().append("Served at: ").append(request.getContextPath());
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// doGet(request, response);
+        if (!ServletManager.getInstance().refererCheck(request, response)) {
+            return;
+        }
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        // doGet(request, response);
         String error = BorrowBookService.getInstance().returnBook(request, response);
         if (null != error) {
             request.setAttribute(Constants.PARAM_ERROR, error);
@@ -51,6 +60,6 @@ public class ReturnBook extends HttpServlet {
             request.setAttribute("fname", name);
             request.getRequestDispatcher(Constants.PAGE_SUCCESS).forward(request, response);
         }
-	}
+    }
 
 }

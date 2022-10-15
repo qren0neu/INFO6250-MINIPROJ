@@ -85,8 +85,8 @@ tfoot td {
 			<thead>
 				<tr>
 					<th scope="col">Select</th>
-					<th scope="col">First Name</th>
-					<th scope="col">Last Name</th>
+					<th scope="col">Book</th>
+					<th scope="col">Author</th>
 				</tr>
 			</thead>
 			<tbody>
