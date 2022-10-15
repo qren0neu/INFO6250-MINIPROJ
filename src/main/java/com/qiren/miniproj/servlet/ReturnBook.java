@@ -7,6 +7,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.qiren.miniproj.manager.SessionManager;
+import com.qiren.miniproj.service.BorrowBookService;
+import com.qiren.miniproj.service.UserService;
+import com.qiren.miniproj.tools.Constants;
+
 /**
  * Servlet implementation class ReturnBook
  */
@@ -26,7 +31,7 @@ public class ReturnBook extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -34,7 +39,18 @@ public class ReturnBook extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		// doGet(request, response);
+        String error = BorrowBookService.getInstance().returnBook(request, response);
+        if (null != error) {
+            request.setAttribute(Constants.PARAM_ERROR, error);
+            request.getRequestDispatcher(Constants.PAGE_FAILED).forward(request, response);
+        } else {
+            String name = UserService.getInstance()
+                    .getUserInfo(SessionManager.getInstance().getUserName(request))
+                    .getUserBean().getFname();
+            request.setAttribute("fname", name);
+            request.getRequestDispatcher(Constants.PAGE_SUCCESS).forward(request, response);
+        }
 	}
 
 }

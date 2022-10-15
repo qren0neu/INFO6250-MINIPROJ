@@ -12,6 +12,33 @@ import com.qiren.miniproj.bean.BorrowBookBean;
 import com.qiren.miniproj.manager.ConnectionManager;
 
 public class BorrowBookDAO {
+    
+    public BorrowBookBean findBorrowBookBeanById(String id) {
+        BorrowBookBean bookBean = null;
+
+        Connection connection = ConnectionManager.getConnection();
+
+        // get book not returned
+        String sql = "select * from borrow_book where pkBorrowBook = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, id);
+            ResultSet res = ps.executeQuery();
+            if (res.next()) {
+                bookBean = new BorrowBookBean();
+                bookBean.setPkBorrowBook(res.getString("pkBorrowBook"));
+                bookBean.setFkBook(res.getString("fkBook"));
+                bookBean.setFkUser(res.getString("fkUser"));
+                bookBean.setFromDate(res.getString("fromDate"));
+                bookBean.setToDate(res.getString("toDate"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(connection);
+        }
+
+        return bookBean;
+    }
 
     public BorrowBookBean findBorrowByBookNotReturn(String pkBook) {
 
@@ -64,9 +91,25 @@ public class BorrowBookDAO {
         return true;
     }
 
-//    public boolean updateReturnDate() {
-//
-//    }
+    public boolean updateReturnDate(String id) {
+        Connection conn = ConnectionManager.getConnection();
+        
+        String sql = "update borrow_book set todate = date(now()) where pkBorrowBook = ?";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, id);
+            ps.execute();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        } finally {
+            ConnectionManager.closeConnection(conn);
+        }
+        return true;
+    }
 
     public List<BorrowBookBean> getBorrowList() {
 

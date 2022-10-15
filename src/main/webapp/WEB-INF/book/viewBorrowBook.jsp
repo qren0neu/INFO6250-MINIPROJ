@@ -98,7 +98,7 @@ tfoot td {
 					
 				%>
 				<tr>
-					<td><input type="radio" name="<%= Constants.PARAM_BOOK_ID %>"
+					<td><input type="radio" name="<%= Constants.PARAM_BORROW_ID %>"
 						value="<%=bookBean.getPkBorrowBook()%>" /></td>
 					<td><%=bookBean.getFkBook()%></td>
 					<td><%=bookBean.getFkUser()%></td>
@@ -123,7 +123,7 @@ tfoot td {
 			</tfoot>
 
 		</table>
-		<input type="hidden" name="action" value="viewBook">
+		<input type="hidden" name="action" value="returnBook">
 		<button type="submit" class="w3-button w3-right w3-light-gray"
 			style="margin-right: 250px; margin-bottom: 120px;">Submit</button>
 	</form>

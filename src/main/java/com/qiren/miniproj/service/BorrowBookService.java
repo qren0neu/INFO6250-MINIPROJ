@@ -66,10 +66,28 @@ public class BorrowBookService {
         return borrowList;
     }
 
-//    public String returnBook(HttpServletRequest request,
-//            HttpServletResponse response) {
-//        
-//    }
+    public String returnBook(HttpServletRequest request,
+            HttpServletResponse response) {
+        String pkBorrowBook = request.getParameter(Constants.PARAM_BORROW_ID);
+        BorrowBookBean bean = borrowBookDAO.findBorrowBookBeanById(pkBorrowBook);
+        
+        if (null != bean.getToDate()) {
+            return "This book is already returned";
+        }
+        
+        String fkBook = bean.getFkBook();
+        BookBean bookBean = BookService.getInstance().getBook(fkBook);
+        String inStock = bookBean.getInstock();
+        int stock = Integer.parseInt(inStock);
+        bookBean.setInstock("" + (stock + 1));
+        // update stock
+        BookService.getInstance().updateBook(bookBean);
+        
+        if (borrowBookDAO.updateReturnDate(pkBorrowBook)) {
+            return null;
+        }
+        return "Return book failed";
+    }
 
     public static BorrowBookService getInstance() {
         return Inner.instance;

@@ -15,6 +15,7 @@ public class Constants {
     public static final String PARAM_BOOK_BEAN = "bookbean";
     public static final String PARAM_BOOK_LIST = "bookbeanList";
     public static final String PARAM_BOOK_ID = "bookid";
+    public static final String PARAM_BORROW_ID = "borrowId";
     public static final String PARAM_USER_LIST = "userlist";
     public static final String PARAM_BORROW_LIST = "borrowList";
 
